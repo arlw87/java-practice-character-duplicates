@@ -4,7 +4,7 @@ public class Duplicates {
 
     public static void main(String ...args){
         System.out.println("Hello Duplicates");
-        int number = countDuplicates("woord");
+        int number = countDuplicates("wooord");
         System.out.println("Duplicates found: " + number);
     }
 
@@ -18,6 +18,20 @@ public class Duplicates {
         //print out array for debugging purposes
         System.out.println(Arrays.toString(array));
 
-        return 0;
+        //sort the array 
+        Arrays.sort(array);
+
+        //print out array for debugging purposes
+        System.out.println(Arrays.toString(array));
+
+        //count duplicates
+        int count = 0;
+        for(int i = 0; i < array.length - 1; i++){
+            if (array[i] == array[i+1]){
+                count++;
+            }
+        }
+
+        return count;
     }
 }
