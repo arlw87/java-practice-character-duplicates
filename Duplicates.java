@@ -1,45 +1,21 @@
 import java.util.*;
 
-import javax.swing.text.Style;
-
 public class Duplicates {
 
     public static void main(String ...args){
-        System.out.println("Hello Duplicates");
-        String word = "wooord";
-        int number = countDuplicates(word);
-        System.out.println("Duplicates found: " + number);
+        System.out.println("This program detects duplicates in an user entered word, note this program is case sensitive");
+        System.out.println("Please Enter a word");
+        String word = getInput();
         Map<Character, Integer> result = countAllDuplicates(word);
         outputResults(result, word);
         System.out.println("End of program");
     }
 
-    static int countDuplicates(String s){
-        //trim the String so it contains no whitespace characters
-        String str1 = s.trim();
-
-        //convert the string into an array
-        char[] array = str1.toCharArray();
-
-        //sort the array 
-        Arrays.sort(array);
-
-        //count duplicates
-        int count = 0;
-        for(int i = 0; i < array.length - 1; i++){
-            if (array[i] == array[i+1]){
-                count++;
-            }
-        }
-
-        return count;
-    }
     
     static Map<Character, Integer> countAllDuplicates(String s){
         
         //HashMap to hold the results
         Map<Character, Integer> d = new HashMap<>();
-
         //convert the String into a char array
         String trimmed = s.trim();
         char[] wordArray = trimmed.toCharArray();
@@ -50,8 +26,6 @@ public class Duplicates {
         for (Character c: wordArray){
             d.compute(c, (k, v) -> (v == null)? 1 : v + 1);
         }
-
-        System.out.println(d.toString());
 
         return d;
     }
@@ -71,6 +45,10 @@ public class Duplicates {
         if (numOfDuplicates == 0){
             System.out.println("No characters had duplicates");
         }
-        
+    }
+
+    static String getInput(){
+        Scanner input = new Scanner(System.in);
+        return input.next();
     }
 }
